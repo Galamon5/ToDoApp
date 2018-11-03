@@ -1,0 +1,144 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/galamon5/Documentos/ToDoApp/App.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _Header = _require(_dependencyMap[3], "./Header");
+
+  var _Header2 = _interopRequireDefault(_Header);
+
+  var _Body = _require(_dependencyMap[4], "./Body");
+
+  var _Body2 = _interopRequireDefault(_Body);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    App: {
+      displayName: "App"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/galamon5/Documentos/ToDoApp/App.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var App = _wrapComponent("App")(function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App() {
+      _classCallCheck(this, App);
+
+      var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+      _this.stateText = function (value) {
+        _this.setState({
+          texto: value
+        });
+      };
+
+      _this.addTodo = function () {
+        _this.setState({
+          tareas: [].concat(_toConsumableArray(_this.state.tareas), [{
+            texto: _this.state.texto,
+            key: String(Date.now())
+          }]),
+          texto: ''
+        });
+
+        console.log(_this.state.tareas.length);
+      };
+
+      _this.deleteTodo = function (id) {
+        var nuevasTareas = _this.state.tareas.filter(function (tarea) {
+          return tarea.key !== id;
+        });
+
+        _this.setState({
+          tareas: nuevasTareas
+        });
+      };
+
+      _this.state = {
+        tareas: [],
+        texto: ''
+      };
+      return _this;
+    }
+
+    _createClass(App, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: styles.container,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 36
+            }
+          },
+          _react3.default.createElement(_Header2.default, {
+            texto: this.state.texto,
+            cambiarTexto: this.stateText,
+            agregaTarea: this.addTodo,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 37
+            }
+          }),
+          _react3.default.createElement(_Body2.default, {
+            tareas: this.state.tareas,
+            "delete": this.deleteTodo,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            }
+          })
+        );
+      }
+    }]);
+
+    return App;
+  }(_react3.default.Component));
+
+  exports.default = App;
+
+  var styles = _reactNative.StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff'
+    }
+  });
+});
